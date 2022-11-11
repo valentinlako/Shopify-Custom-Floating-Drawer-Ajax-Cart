@@ -6,10 +6,13 @@
 
 ## Setup
 
-Add cart-drawer.liquid file within your theme's "Sections" folder
-Add ajaxify-cart.liquid file within your theme's "Snippets" folder
-Add v-drawer.css file within your theme's "Assets" folder
-Add v-drawer.js file within your theme's "Assets" folder
+// Add cart-drawer.liquid file within your theme's "Sections" folder
+
+// Add ajaxify-cart.liquid file within your theme's "Snippets" folder
+
+// Add v-drawer.css file within your theme's "Assets" folder
+
+// Add v-drawer.js file within your theme's "Assets" folder
 
 After all files have been uploaded, in your theme.liquid main file, right under the <body> element, add the following line of code:
 
