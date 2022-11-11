@@ -1,0 +1,70 @@
+{{ 'v-drawer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'v-drawer.js' | asset_url }}" defer="defer"></script>
+{% render 'ajaxify-cart' %}
+
+<div id="mini-cart" class="hc-cartDrawer" style="display: none;">
+  <div class="v-drawer-top">
+    <h4>Cart</h4>
+    <span class="hc-close" aria-hidden="true">&times;</span>
+  </div>
+    <form action="/cart" method="post" novalidate class="cart">
+      <div class="hc-mini-table">
+        <h3>Product</h3>
+        <div class="v-drawer-items">
+          {% for item in cart.items %}
+            <div class="item-details" data-id="{{ item.id }}">
+              <div class="td-image">
+                <img src="{{ item | img_url:'520x520' }}" />
+              </div>
+              <div class="v-drawer-info">
+                <div class="mini_cart_title_price">
+                  <div class="v-drawer-ptitle">{{ item.title }}</div>
+                  <div class="v-drawer-price">
+                    <span class="item-price">{{ item.price | money }}</span>
+                  </div>
+                </div>
+                <div class="v-drawer-qty">
+                  <a href class="minus-quantity">&minus;</a>
+                  <input type="text" class="quantity-input" value="{{item.quantity}}">
+                  <a href class="plus-quantity" >&plus;</a>
+                  <a class="hc-remove" href="">Remove</a>
+                </div>
+              </div>
+            </div>  
+          {% endfor %}
+        </div>
+      </div>
+      <div class="hc-buttons action buttons">
+        <div class="subtotal">
+          <strong class="float-left">Subtotal </strong>
+          <strong class="amount drawer-total">{{ cart.total_price | money }}</strong>
+        </div>
+        <div class="v-drawer-cta">
+          <a class="checkout ee-primary-btn" href="/checkout" rel="nofollow">Checkout</a>
+          <p>Taxes and shipping calculated at checkout</p>
+        </div>
+        <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+      </div>
+    </form>
+    <div class="v-drawer-empty" style="display: none;">
+      <div class="rte" data-cc-animate data-cc-animate-delay="0.4s">
+        <p data-cc-animate data-cc-animate-delay="0.2s" class="align-center">
+          {{ 'cart.general.empty' | t }}
+        </p>
+        <p class="align-center"><a class="ee-secondary-btn" data-cc-animate-click href="{{ continue_shopping_page }}">{{ 'cart.general.continue_browsing' | t }}</a></p>
+      </div>
+    </div>
+</div>
+
+<div class="custom-overlay"></div>
+
+
+<script>
+  {% if cart.item_count < 1 %}
+    document.querySelector('.v-drawer-empty').style.display = "flex";
+    document.querySelector('#mini-cart').querySelector('form').style.display = "none";
+  {% else %}
+    document.querySelector('.v-drawer-empty').style.display = "none";
+    document.querySelector('#mini-cart').querySelector('form').style.display = "block";
+  {% endif %}
+</script>
