@@ -1,6 +1,7 @@
 # Shopify Custom Floating Drawer Ajax Cart
 
 ![image](https://user-images.githubusercontent.com/1571083/201380528-8ff9165f-e3d1-45a4-807e-8bd05a73cc06.png)
+![image](https://user-images.githubusercontent.com/1571083/201381433-6c92f8d8-c891-4b61-b739-5ce8cc727126.png)
 
 ---
 
